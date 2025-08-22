@@ -28,10 +28,10 @@ class CVParams:
         # Section inclusion parameters
         self.sentence_tf_model = sentence_tf_model
         self.max_activities = max_activities
-        self.max_exp_highlights = 3
+        self.max_exp_highlights = 4
         self.max_edu = 3
         self.max_skills = 7
-        self.max_projects = 2
+        self.max_projects = 3
         self.selection_mode = "top_k"
 
         # Layout parameters

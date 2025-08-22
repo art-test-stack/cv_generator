@@ -113,7 +113,8 @@ def make_experiences(cv_content: CVContent, params: CVParams) -> str:
         )
         if exp.highlights:
             latex_code.append("\\resumeItemListStart\n")
-            highlights = sorted(exp.highlights, key=lambda x: x["id"], reverse=True)
+            highlights = exp.highlights
+            # highlights = sorted(exp.highlights, key=lambda x: x["id"], reverse=False)
             for highlight in highlights:
                 latex_code.append(f"\\resumeItem{{{highlight['text']}}}\n")
             latex_code.append("\\resumeItemListEnd\n")
@@ -123,7 +124,7 @@ def make_experiences(cv_content: CVContent, params: CVParams) -> str:
 
 def make_header(cv_content: CVContent, params: CVParams) -> str:
     header_raw = cv_content.header
-    header = f"""\\Centering\n
+    header = f"""\\centering\n
 \\textbf{{\\LARGE {header_raw.name}}} \\\\ \n\n
 \\vspace{{7pt}} \n
 {{\\large {header_raw.description}}}\n
@@ -163,9 +164,15 @@ def make_projects(cv_content: CVContent, params: CVParams) -> str:
         project_title = f"{logo}{project.title}"
         if project.url:
             project_title = f"\\href{{{project.url}}}{{{logo}{project.title}}}"
-
+            project_title = f"{logo}{project.title}"
+        if project.url.startswith("https://"):
+            plain_url = project.url[8:].replace('_', r'\_')
+            plain_url = project.url[8:]
+            project_url = f"\\href{{{project.url}}}{{{plain_url}}}"
+        else:
+            raise ValueError(f"Project URL must start with 'https://', got: {project.url}")
         latex_code.append(
-            f"\\resumeSubheading{{{project_title}}}{{}}{{{project.dates}}}{{}} \n"
+            f"\\resumeSubheading{{{project_title}}}{{{project.type}}}{{{project_url}}}{{{project.dates}}} \n"
         )
 
         if project.text:
@@ -193,7 +200,7 @@ def make_skills(cv_content: CVContent, params: CVParams) -> str:
             continue
         skill_items = ", ".join(skill.items)
         latex_code.append(
-            f"\\resumeItem{{{emoji_skill}}}\\textbf{{{skill.name}}}: {{{skill_items}.}}\n"
+            f"\\resumeItem{{{emoji_skill}\\textbf{{{skill.name}}}: {skill_items}.}}\n"
         )
     latex_code.append("\\resumeSubHeadingListEnd\n")
 

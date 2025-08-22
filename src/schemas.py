@@ -51,6 +51,7 @@ class Project(BaseModel):
     technologies: List[str] = None
     bullet_points: List[str] = None
     dates: Optional[str] = None
+    type: Optional[str] = None
 
 class Skill(BaseModel):
     name: str
