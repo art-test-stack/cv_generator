@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 class Activity(BaseModel):
     name: str
-    description: str
+    text: str
     emoji: Optional[str] = None
 
 class Contact(BaseModel):
@@ -30,7 +30,9 @@ class Experience(BaseModel):
     company: str
     location: str
     dates: str
-    highlights: Optional[List[str]] = None
+    highlights: Optional[List[Dict]] = None
+    url: Optional[str] = None
+    logo: str = ""
 
 class Header(BaseModel):
     name: str
@@ -44,7 +46,7 @@ class Language(BaseModel):
 class Project(BaseModel):
     id: int
     title: str
-    description: str
+    text: str
     url: Optional[str] = None
     technologies: List[str] = None
     bullet_points: List[str] = None
@@ -57,7 +59,7 @@ class Skill(BaseModel):
 
 class Summary(BaseModel):
     id: int
-    content: str
+    text: str
 
 class CVContent(BaseModel):
     activities: List[Activity]

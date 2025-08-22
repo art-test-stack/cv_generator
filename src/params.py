@@ -2,22 +2,59 @@
 class CVParams:
     def __init__(
             self, 
-            logo_width=0.38, 
+            logo_width="0.38cm", 
             github_logo="github_logo.png", 
             linkedin_logo="linkedin_logo.png",
+            user_pic="user_pic.png",
+            emoji_font="AppleColorEmoji.ttf",
+            emoji_dir="./rsc/",
             use_emojis=True,
-            cv_folder="",
+            data_dir="data/en",
+            cv_language="en",
+            cv_folder="output_dir",
             cv_name="cv",
-            merge_contact_header=False,
-            minipages=False
+            merge_contact_header=True,
+            sentence_tf_model="all-MiniLM-L6-v2",
+            two_columns=False,
+            max_activities=5,
+            cv_style="modern",
+            font_size="10pt",
         ):
+        # Input parameters
+        self.data_dir = data_dir
+        self.cv_language = cv_language
+        self.latex_template_dir = f"data/latex"
+
+        # Section inclusion parameters
+        self.sentence_tf_model = sentence_tf_model
+        self.max_activities = max_activities
+        self.max_exp_highlights = 3
+        self.max_edu = 3
+        self.max_skills = 7
+        self.max_projects = 2
+        self.selection_mode = "top_k"
+
+        # Layout parameters
         self.logo_width = logo_width
         self.github_logo = github_logo
         self.linkedin_logo = linkedin_logo
+        self.pic = user_pic
         self.use_emojis = use_emojis
         self.merge_contact_header = merge_contact_header
-        self.minipages = minipages
-        
+        self.two_columns = two_columns
+        self.cv_style = cv_style
+
+        self.font_size = font_size or "10pt"
+        self.left_col_width = "0.38"
+        self.col_sep = "0.05"
+        self.emoji_font = emoji_font
+        self.emoji_dir = emoji_dir
+        self.width_len = "1.4in"
+        self.side_margin = "-0.7in"
+        self.text_width = "1.4in"
+        self.top_margin = "-0.5in"
+        self.text_height = "1.4in"
+
         # Paths for CV output
         self.cv_folder = cv_folder
         self.cv_name = cv_name

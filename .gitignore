@@ -2,6 +2,14 @@ data/*
 !/data/template/
 !/data/latex/
 
+rsc/*
+!/rsc/github_logo.png
+!/rsc/linkedin_logo.png
+
+out_dir/*
+
+test.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

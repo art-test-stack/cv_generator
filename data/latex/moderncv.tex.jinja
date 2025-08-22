@@ -1,0 +1,118 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\graphicspath{ {./images/} }
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{tikz}
+\usepackage[export]{adjustbox}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage[T1]{fontenc}
+\usepackage[official]{eurosym}
+\urlstyle{same}
+{% if use_emojis %}
+\usepackage{emoji}
+{% endif %}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+
+\newcommand{\widthLen}{ {{ width_len }} }
+\addtolength{\oddsidemargin}{ {{ side_margin }} }  
+\addtolength{\evensidemargin}{ {{ side_margin }} }  
+\addtolength{\textwidth}{ {{ text_width }} }    
+\addtolength{\topmargin}{ {{ top_margin }} }
+\addtolength{\textheight}{ {{ text_height }} }
+
+\newlength{\LeftColWidth}
+\setlength{\LeftColWidth}{ {{ left_col_width }} \linewidth}
+\newlength{\ColSep}
+\setlength{\ColSep}{ {{ col_sep }} \linewidth} 
+
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  % \vspace{-20pt}
+  \scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule %\vspace{-5pt}
+]
+\titleformat{\subsection}{
+  \scshape
+}{}{0em}{}[\color{black}]
+
+{% raw %}
+\newcommand{\resumeItem}[1]{
+\vspace{-3pt}
+  \item\small{
+    {#1}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-3pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}
+}
+
+\newcommand{\resumeExperienceSubheading}[4]{
+  \vspace{-6pt}\item 
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2}\\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}
+}
+{% endraw %}
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,label={}]\itemindent=-5pt}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+{% if use_emojis %}
+\setemojifont{{"{"}}{{ emoji_font }}{{"}"}}[Path={{ emoji_dir }}]
+{% endif %}
+% [Renderer=Harfbuzz] 
+\begin{document}
+
+\begin{minipage}[t]{\LeftColWidth} 
+    \hfill
+    \input{pic}
+    % 
+    \vspace{7pt}
+    \input{header}
+    \input{contact}
+    \input{skills}
+    \input{languages}
+    \input{activities}
+\end{minipage}%
+\hspace{\ColSep}%
+\begin{minipage}[t]{\dimexpr\linewidth-\LeftColWidth-\ColSep\relax}
+    \input{summary}
+    \input{education}
+    \input{experiences}
+    \input{projects}
+\end{minipage}
+
+\end{document}

@@ -1,0 +1,8 @@
+ollama
+openai
+sentence-transformers
+pydantic
+jinja2
+mlflow
+PyYAML
+pathlib
