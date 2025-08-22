@@ -1,0 +1,50 @@
+{
+    "name": "Languages",
+    "items": ["Python", "C++", "JavaScript", "TypeScript"],
+    "emoji": "computer"
+}
+{
+    "name": "ML/AI",
+    "items": ["PyTorch", "Keras", "TensorFlow", "XGBoost", "scikit-learn", "imbalanced-learn"],
+    "emoji": "brain"
+}
+{
+    "name": "HGFace",
+    "items": ["transformers", "datasets", "accelerate", "PEFT", "tokenizers"],
+    "emoji": "hugging-face"
+}
+{
+    "name": "Data",
+    "items": ["Pandas", "SQL", "Prefect", "Dask"],
+    "emoji": "package"
+}
+{
+    "name": "NLP",
+    "items": ["NLTK", "SpaCy", "stanza"],
+    "emoji": "speech-balloon"
+}
+{
+    "name": "CV",
+    "items": ["OpenCV", "torchvision", "PIL"],
+    "emoji": "camera"
+}
+{
+    "name": "Audio",
+    "items": ["librosa"],
+    "emoji": "musical-note"
+}
+{
+    "name": "MLOps",
+    "items": ["Docker", "Git", "CI/CD", "MLflow"],
+    "emoji": "gear"
+}
+{
+    "name": "Web",
+    "items": ["FastAPI", "Next.js", "React", "Auth0"],
+    "emoji": "globe-with-meridians"
+}
+{
+    "name": "Infra",
+    "items": ["AWS", "Azure", "HPC clusters"],
+    "emoji": "control-knobs"
+}

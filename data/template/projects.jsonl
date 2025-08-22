@@ -1,0 +1,81 @@
+{
+    "id": 1,
+    "title": "LLM Uncertainty Clusters with Tsetlin Machine",
+    "dates": "Oct. 2024 -- Nov. 2024",
+    "purpose": "Replication of Zhang et al. (2020): Implemented a Transformer-Encoder to predict loan status from text, achieving improved consistency.",
+    "technologies": ["Python", "PyTorch", "pandas", "imblearn", "stanza (CoreNLP)", "SpaCy (GloVe)"],
+    "description": "Developed a replication study exploring loan prediction tasks using neural networks, focusing on uncertainty analysis with Tsetlin Machines.",
+    "url": "https://github.com/art-test-stack/LLM-UQ-with-TM"
+}
+{
+    "id": 2,
+    "title": "Credit Risk Eval Model with Textual Features",
+    "dates": "Oct. 2024 -- Nov. 2024",
+    "purpose": "Replication of Zhang et al. (2020): Implemented a Transformer-Encoder to predict loan status from text, achieving improved consistency.",
+    "technologies": ["Python", "PyTorch", "pandas", "imblearn", "stanza (CoreNLP)", "SpaCy (GloVe)"],
+    "description": "Built a credit risk evaluation model leveraging textual features, validating Transformer architectures for financial prediction tasks.",
+    "url": "https://github.com/art-test-stack/credit_risk_eval_model"
+}
+{
+    "id": 3,
+    "title": "Vessel Position Forecast",
+    "dates": "Sept. 2024 -- Nov. 2024",
+    "purpose": "Developed models predicting ship movements using AIS data, which logs real-time updatess on position, speed, and heading.",
+    "technologies": ["Python", "PyTorch", "XGBoost", "sklearn", "geopy", "pandas"],
+    "description": "Implemented predictive models including tree-based methods and deep learning architectures to forecast vessel positions.",
+    "url": "https://github.com/art-test-stack/vessel_position_forecast"
+}
+{
+    "id": 4,
+    "title": "Tsetlin Machine Replication",
+    "dates": "Jan. 2025",
+    "purpose": "Implemented a simple Python version of the Tsetlin Machine introduced by Granmo (2018).",
+    "technologies": ["Python", "Vanilla"],
+    "description": "Educational project demonstrating the interpretable behavior of Tsetlin Machines without optimization for large datasets.",
+    "url": "https://github.com/art-test-stack/tsetlin_machine"
+}
+{
+    "id": 5,
+    "title": "Deep Music",
+    "dates": "Dec. 2024 -- Present",
+    "purpose": "Personal project: A NextJS and React web app for text-to-music generation using a MusicLM-based deep learning model.",
+    "technologies": ["Python", "PyTorch", "torchaudio", "transformers", "librosa", "FastAPI", "TypeScript", "React", "NextJS"],
+    "description": "Web app integrating frontend with MusicLM-inspired text-to-music generation, built in personal time.",
+    "url": "https://github.com/art-test-stack/deep_music" 
+}
+{
+    "id": 6,
+    "title": "Language Model Replication",
+    "dates": "Aug. 2024 -- Present",
+    "purpose": "Replication of GPT model based on the Transformer architecture (Vaswani et al. 2017).",
+    "technologies": ["Python", "PyTorch", "tiktoken", "datasets"],
+    "description": "Rebuilding a language model with dataset preprocessing and training pipeline from scratch.",
+    "url": "https://github.com/art-test-stack/language_model"
+}
+{
+    "id": 7,
+    "title": "Tokenizer",
+    "dates": "Aug. 2024 -- Sept. 2024",
+    "purpose": "Web app to compare pre-built or self-built tokenizers, inspired by tiktokenizer.app.",
+    "technologies": ["Python", "FastAPI", "RegEx", "tiktoken", "tokenizers", "TypeScript", "React", "NextJS"],
+    "description": "Interactive tool for experimenting with tokenizers, enabling users to build and compare tokenization strategies.",
+    "url": "https://github.com/art-test-stack/tokenizer"
+}
+{
+    "id": 8,
+    "title": "Homemade Neural Net",
+    "dates": "June 2023 -- May 2024",
+    "purpose": "Framework to easily create and train neural networks without coding, designed for educational purposes.",
+    "technologies": ["Python", "Numpy"],
+    "description": "Provides a simple environment to experiment with neural network architectures and understand their functioning.",
+    "url": "https://github.com/art-test-stack/homemade_neural_net"
+}
+{
+    "id": 9,
+    "title": "Stars GUI",
+    "dates": "Mar. 2020 -- May 2020",
+    "purpose": "Simulate celestial body movements by solving Newton’s equations using Euler’s method.",
+    "technologies": ["Python", "Numpy", "Tkinter"],
+    "description": "Graphical application visualizing celestial dynamics; performs well for small systems despite optimization opportunities.",
+    "url": "https://github.com/art-test-stack/stars_gui"
+}

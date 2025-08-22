@@ -1,0 +1,42 @@
+{
+    "id": 0,
+    "title": "Frontend Developer Intern",
+    "company": "LoremSoft -- Lorem ipsum dolor sit amet",
+    "location": "Berlin, Germany",
+    "dates": "Feb. 2021 -- Jul. 2021",
+    "highlights": [
+        {"id": 0, "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+        {"id": 1, "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+    ],
+    "logo": "",
+    "url": "https://www.loremsoft.io"
+},
+{
+    "id": 1,
+    "title": "Data Science Research Assistant",
+    "company": "Ipsum Lab -- Duis aute irure dolor in reprehenderit",
+    "location": "Copenhagen, Denmark",
+    "dates": "Sep. 2021 -- Jan. 2022",
+    "highlights": [
+        {"id": 0, "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."},
+        {"id": 1, "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."},
+        {"id": 2, "text": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."}
+    ],
+    "logo": "",
+    "url": "https://www.ipsumlab.org"
+},
+{
+    "id": 2,
+    "title": "Master Thesis on Symbolic AI",
+    "company": "Dolor University -- Ut enim ad minima veniam",
+    "location": "Milan, Italy",
+    "dates": "Mar. 2022 -- Oct. 2022",
+    "highlights": [
+        {"id": 0, "text": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur."},
+        {"id": 1, "text": "Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"},
+        {"id": 2, "text": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
+        {"id": 3, "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque."}
+    ],
+    "logo": "",
+    "url": "https://www.doloruniv.it"
+}

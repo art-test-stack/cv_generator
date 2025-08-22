@@ -1,0 +1,20 @@
+{
+    "name": "Cello",
+    "description": "Classical cellist since age 7, conservatory-trained.",
+    "emoji": "violin",
+},
+{
+    "name": "Sports",
+    "description": "Enthusiastic about soccer, basketball, and tennis.",
+    "emoji": "soccer",
+},
+{
+    "name": "Sailing",
+    "description": "Certified level 4 FFV.",
+    "emoji": "boat",
+},
+{
+    "name": "Mountain",
+    "description": "Avid hiker and skier, exploring various mountain ranges.",
+    "emoji": "mountain"
+}

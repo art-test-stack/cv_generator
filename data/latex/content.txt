@@ -1,0 +1,22 @@
+\begin{document}
+
+\begin{minipage}[t]{\LeftColWidth} % left column narrower
+    \hfill
+    \input{pic}
+    % 
+    \vspace{7pt}
+    \input{header}
+    \input{contact}
+    \input{skills}
+    \input{languages}
+    \input{activities}
+\end{minipage}%
+\hspace{\ColSep}%
+\begin{minipage}[t]{\dimexpr0.99\linewidth-\LeftColWidth-\ColSep\relax}
+    \input{summary}
+    \input{education}
+    \input{experiences}
+    \input{projects}
+\end{minipage}
+
+\end{document}
