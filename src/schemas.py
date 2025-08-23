@@ -36,7 +36,10 @@ class Experience(BaseModel):
 
 class Header(BaseModel):
     name: str
-    description: str
+    text: str
+    specialization: Optional[str] = None
+    nationality: Optional[str] = None
+    education: Optional[str] = None
 
 class Language(BaseModel):
     id: int

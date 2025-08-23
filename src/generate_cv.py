@@ -57,7 +57,7 @@ def generate_latex_cv(params: CVParams, job_description=None) -> str:
 
 
 
-def compile_latex_cv(params: CVParams) -> str:
+def compile_latex_cv(params: CVParams, quite: bool = True) -> str:
     """
     Compile the LaTeX content into a PDF file.
     :param latex_content: The LaTeX content to compile.
@@ -68,11 +68,16 @@ def compile_latex_cv(params: CVParams) -> str:
 
     output_path = f"{params.cv_folder}/main.tex"
     print(f"Compiling LaTeX CV to PDF at {output_path}")
-    subprocess.run([
+    cmd = [
         "lualatex",
+        f"-jobname={params.cv_name}",
         "-output-directory", ".",
         "main.tex"
-    ], check=True, cwd=f"/Users/arthurtestard/generate_cv/{params.cv_folder}") # Adjust cwd as needed
+    ]
+    run_kwargs = {"check": True, "cwd": f"/Users/arthurtestard/generate_cv/{params.cv_folder}"}
+    if quite:
+        run_kwargs.update({"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL})
+    subprocess.run(cmd, **run_kwargs)
 
     return output_path
 

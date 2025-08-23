@@ -110,6 +110,12 @@ def select_content(
             k=1
         ) if cv_content["summary"] else []
         top_education = cv_content["education"][:params.max_edu]
+        top_header = retrieve_topk(
+            embedder=embedder, 
+            job_desc=job_description, 
+            items=cv_content["header"], 
+            k=1
+        )[0] if cv_content["header"] else {}
 
     else:
         raise ValueError(f"Unknown selection mode: {params.selection_mode}")
@@ -123,7 +129,7 @@ def select_content(
         "skills": [Skill(**skill) for skill in top_skills],
         "summary": Summary(**top_summary[0]) if top_summary else None,
         "contact": Contact(**cv_content["contact"]),
-        "header": Header(**cv_content["header"])
+        "header": Header(**top_header)
     }
     del cv_content
     return CVContent(**content)

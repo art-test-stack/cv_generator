@@ -1,3 +1,4 @@
+from pathlib import Path
 
 class CVParams:
     def __init__(
@@ -9,7 +10,7 @@ class CVParams:
             emoji_font="AppleColorEmoji.ttf",
             emoji_dir="./rsc/",
             use_emojis=True,
-            data_dir="data/en",
+            data_dir="data/",
             cv_language="en",
             cv_folder="output_dir",
             cv_name="cv",
@@ -19,9 +20,13 @@ class CVParams:
             max_activities=5,
             cv_style="modern",
             font_size="10pt",
+            rsc_dir="rsc",
+            max_projects=3,
+            availability=True,
+            **kwargs
         ):
         # Input parameters
-        self.data_dir = data_dir
+        self.data_dir = Path(data_dir) / cv_language
         self.cv_language = cv_language
         self.latex_template_dir = f"data/latex"
 
@@ -29,12 +34,17 @@ class CVParams:
         self.sentence_tf_model = sentence_tf_model
         self.max_activities = max_activities
         self.max_exp_highlights = 4
-        self.max_edu = 3
+        self.max_edu = 4
         self.max_skills = 7
-        self.max_projects = 3
+        if cv_style == "classic":
+            max_projects = 2
+        if cv_style == "modernus":
+            max_projects = 4
+        self.max_projects = max_projects
         self.selection_mode = "top_k"
 
         # Layout parameters
+        self.availability = availability
         self.logo_width = logo_width
         self.github_logo = github_logo
         self.linkedin_logo = linkedin_logo
@@ -52,7 +62,7 @@ class CVParams:
         self.width_len = "1.4in"
         self.side_margin = "-0.7in"
         self.text_width = "1.4in"
-        self.top_margin = "-0.5in"
+        self.top_margin = "-0.5in" if cv_language == "en" else "-0.8in"
         self.text_height = "1.4in"
 
         # Paths for CV output
