@@ -35,7 +35,7 @@ class CVParams:
         self.max_activities = max_activities
         self.max_exp_highlights = 4
         self.max_edu = 4
-        self.max_skills = 7
+        self.max_skills = 8
         if cv_style == "classic":
             max_projects = 2
         if cv_style == "modernus":

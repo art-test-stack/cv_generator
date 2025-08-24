@@ -1,6 +1,7 @@
 from src.generate_cv import generate_latex_cv, compile_latex_cv
 from src.params import CVParams
 from src.cleaner import clean_folder
+from src.get_params import get_params
 
 from pathlib import Path
 import argparse
@@ -19,21 +20,23 @@ def parse_arguments():
 
 if __name__ == "__main__":
     args = parse_arguments()
-
     job_offer_file = Path(args.offer_file) if args.offer_file else None
     if job_offer_file is None:
         job_desc = None
+        params = args.__dict__
     elif job_offer_file.exists():
-        job_desc = args.offer_file = str(job_offer_file.resolve())
+        job_desc = str(job_offer_file.resolve())
+        params = args.__dict__ | get_params(job_offer_file.read_text())
+        params["cv_name"] = job_offer_file.stem
 
     params = CVParams(
-        **args.__dict__,
         github_logo="../rsc/github_logo.png",
         linkedin_logo="../rsc/linkedin_logo.png",
         user_pic="../rsc/cv.png",
         emoji_font="AppleColorEmoji.ttf",
         emoji_dir="./../rsc/",
         cv_folder="out_dir",
+        **params
     )
     latex_cv = generate_latex_cv(params, job_description=job_desc)
     compile_latex_cv(params)
