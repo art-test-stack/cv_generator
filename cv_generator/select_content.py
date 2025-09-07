@@ -3,11 +3,11 @@ from .schemas import CVContent, Activity, Experience, Project, Skill, Education,
 from typing import Dict, Optional
 from sentence_transformers import SentenceTransformer, util
 import json
-import openai  # if you want API mode
-import ollama  # if you want local mode
+# import openai  
+# import ollama  
 
 
-def retrieve_topk(embedder, job_desc, items, k=3):
+def retrieve_topk(embedder: SentenceTransformer, job_desc: str, items: list, k: int = 3) -> list:
     job_emb = embedder.encode(job_desc, convert_to_tensor=True)
     if not items[0].get("text", None):
         for item in items:
@@ -19,50 +19,50 @@ def retrieve_topk(embedder, job_desc, items, k=3):
     return [it[0] for it in ranked[:k]]
 
 
-def llm_select(job_desc, highlights, projects, skills, mode="ollama"):
-    # Format candidate list
-    candidates = {
-        "highlights": highlights,
-        "projects": projects,
-        "skills": skills
-    }
+# def llm_select(job_desc, highlights, projects, skills, mode="ollama"):
+#     # Format candidate list
+#     candidates = {
+#         "highlights": highlights,
+#         "projects": projects,
+#         "skills": skills
+#     }
 
-    system_prompt = """You are an assistant that selects the most relevant items
-for a job application based on a job description. You must only return the IDs
-of the selected items, never create new IDs, and respond in JSON format."""
+#     system_prompt = """You are an assistant that selects the most relevant items
+# for a job application based on a job description. You must only return the IDs
+# of the selected items, never create new IDs, and respond in JSON format."""
 
-    user_prompt = f"""
-    Job offer:
-    ---
-    {job_desc}
-    ---
+#     user_prompt = f"""
+#     Job offer:
+#     ---
+#     {job_desc}
+#     ---
 
-    Candidate items (with id and text):
-    {json.dumps(candidates, indent=2)}
+#     Candidate items (with id and text):
+#     {json.dumps(candidates, indent=2)}
 
-    Task:
-    - Return ONLY the IDs of the most relevant items.
-    - Respond in JSON with three lists: "highlights", "projects", "skills".
-    """
+#     Task:
+#     - Return ONLY the IDs of the most relevant items.
+#     - Respond in JSON with three lists: "highlights", "projects", "skills".
+#     """
 
-    if mode == "ollama":
-        response = ollama.chat(model="mistral", messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ])
-        return json.loads(response["message"]["content"])
+#     if mode == "ollama":
+#         response = ollama.chat(model="mistral", messages=[
+#             {"role": "system", "content": system_prompt},
+#             {"role": "user", "content": user_prompt}
+#         ])
+#         return json.loads(response["message"]["content"])
 
-    elif mode == "openai":
-        client = openai.OpenAI()
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            response_format={"type": "json_object"}
-        )
-        return json.loads(response.choices[0].message.content)
+#     elif mode == "openai":
+#         client = openai.OpenAI()
+#         response = client.chat.completions.create(
+#             model="gpt-4o-mini",
+#             messages=[
+#                 {"role": "system", "content": system_prompt},
+#                 {"role": "user", "content": user_prompt}
+#             ],
+#             response_format={"type": "json_object"}
+#         )
+#         return json.loads(response.choices[0].message.content)
 
 
 

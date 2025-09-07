@@ -1,14 +1,12 @@
 from .params import CVParams
-from .schemas import CVContent
 from .get_content import get_content
 from .select_content import select_content
 from .make_sections import make_content
 from .format_cv import format_cv
+from .schemas import JobFormatting
 import mlflow, yaml, pathlib
-from jinja2 import Template
-import subprocess, platform, re, emoji
+import subprocess, platform
 from pathlib import Path
-from jinja2 import Environment, FileSystemLoader 
 
 
 # def render_cv(profile: Profile, job_text: str, template_path: str) -> str:
@@ -67,17 +65,20 @@ def compile_latex_cv(params: CVParams, quite: bool = True) -> str:
     # subprocess.run(['pdflatex', output_path])  # Uncomment to run LaTeX compilation
 
     output_path = f"{params.cv_folder}/main.tex"
-    print(f"Compiling LaTeX CV to PDF at {output_path}")
+    print(f"Compiling LaTeX CV to PDF at {output_path}. CV name: {params.cv_name}.")
     cmd = [
         "lualatex",
         f"-jobname={params.cv_name}",
         "-output-directory", ".",
         "main.tex"
     ]
-    run_kwargs = {"check": True, "cwd": f"/Users/arthurtestard/generate_cv/{params.cv_folder}"}
+    run_kwargs = {"check": True, "cwd": f"{params.cv_folder}"}
     if quite:
         run_kwargs.update({"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL})
+
     subprocess.run(cmd, **run_kwargs)
+
+    print(("CV generated successfully."))
 
     return output_path
 

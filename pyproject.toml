@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cv_generator"
+version = "0.1.0"
+description = "A package to generate CVs adapted to your profile, with controlled generation."
+authors = [
+    { name="Arthur Testard", email="arthur.testard.pro@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10.11"
+
+dependencies = [
+    "pydantic",
+    "sentence_transformers",
+    "langdetect",
+    "emoji"
+]                   
+
+classifiers = [
+    "Private :: Do Not Upload",
+    "Programming Language :: Python :: 3",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cv_generator*"]

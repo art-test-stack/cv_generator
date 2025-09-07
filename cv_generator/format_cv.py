@@ -6,8 +6,7 @@ from pathlib import Path
 from jinja2 import Environment
 
 def get_latex_template(params: CVParams) -> str:
-    latex_template_dir = Path(params.latex_template_dir)
-    base_template = latex_template_dir / "base.tex.jinja"
+    base_template = params.latex_template_dir / "base.tex.jinja"
     if not base_template.exists():
         raise FileNotFoundError(f"Base LaTeX template not found at {base_template}")
     
@@ -18,7 +17,7 @@ def get_latex_template(params: CVParams) -> str:
     }
     suffix_dir = suf_dir.get(params.cv_style, "moderncv.tex.jinja")
 
-    latex_template = latex_template_dir / suffix_dir
+    latex_template = params.latex_template_dir / suffix_dir
 
     env = Environment(
         trim_blocks=True,

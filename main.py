@@ -1,7 +1,7 @@
-from src.generate_cv import generate_latex_cv, compile_latex_cv
-from src.params import CVParams
-from src.cleaner import clean_folder
-from src.get_params import get_params
+from cv_generator.generate_cv import generate_latex_cv, compile_latex_cv
+from cv_generator.params import CVParams
+from cv_generator.cleaner import clean_workspace
+from cv_generator.get_params import get_params
 
 from pathlib import Path
 import argparse
@@ -30,9 +30,9 @@ if __name__ == "__main__":
         params["cv_name"] = job_offer_file.stem
 
     params = CVParams(
-        github_logo="../rsc/github_logo.png",
-        linkedin_logo="../rsc/linkedin_logo.png",
-        user_pic="../rsc/cv.png",
+        github_logo="./../rsc/github_logo.png",
+        linkedin_logo="./../rsc/linkedin_logo.png",
+        user_pic="./../rsc/cv.png",
         emoji_font="AppleColorEmoji.ttf",
         emoji_dir="./../rsc/",
         cv_folder="out_dir",
@@ -40,4 +40,5 @@ if __name__ == "__main__":
     )
     latex_cv = generate_latex_cv(params, job_description=job_desc)
     compile_latex_cv(params)
-    clean_folder(params)
+    clean_workspace(params)
+    # TODO: Loop on while .pdf has 1 page only by changing layout and max bullet points by section

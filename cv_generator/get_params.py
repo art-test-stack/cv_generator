@@ -1,4 +1,3 @@
-from .params import CVParams
 from langdetect import detect
 from emoji import EMOJI_DATA
 
@@ -30,7 +29,7 @@ def get_params(job_description: str = None) -> Dict:
     if params["use_emojis"] or language == "fr":
         params["cv_style"] = "modern"
     elif language == "en":
-        params["cv_style"] = "classic"
+        params["cv_style"] = "modern" # should be classic but classic template has layout issues 
     else:
         params["cv_style"] = "modern"
 

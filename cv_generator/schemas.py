@@ -33,6 +33,7 @@ class Experience(BaseModel):
     highlights: Optional[List[Dict]] = None
     url: Optional[str] = None
     logo: str = ""
+    supplemental_info: Optional[str] = None
 
 class Header(BaseModel):
     name: str
@@ -75,3 +76,15 @@ class CVContent(BaseModel):
     projects: List[Project]
     skills: List[Skill]
     summary: Optional[Summary] = None
+
+class JobFormatting(BaseModel):
+    id: str
+    title: str
+    company: str
+    location: str
+    url: Optional[str] = None
+    description: Optional[str] = None
+    stem: Optional[str] = None
+    source: Optional[str] = None
+    emails: Optional[List[str]] = None
+    job_type: Optional[str] = None

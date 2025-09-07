@@ -1,8 +1,6 @@
 from .schemas import CVContent
 from .params import CVParams
-from typing import Union, Dict
-from pathlib import Path
-import json
+from typing import Dict
 
 section_titles = {
     "en": {
@@ -20,7 +18,7 @@ section_titles = {
         "contact": "Contact",
         "education": "Formation",
         "experiences": "Expériences",
-        "skills": "Compétences \\& Outils",
+        "skills": "Compétences",
         "projects": "Projets",
         "languages": "Langues",
         "summary": "Résumé"
@@ -60,8 +58,8 @@ def make_contact(cv_content: CVContent, params: CVParams) -> str:
     emoji_phone = "\\emoji{iphone} " if use_emojis else ""
     # emoji_phone = "\\emoji{iphone} " if use_emojis else ""
     emoji_email = "\\emoji{e-mail} " if use_emojis else ""
-    emoji_github = f"\\includegraphics[width={params.logo_width}]{{{params.github_logo}}}\\; " if use_emojis else "github/"
-    emoji_linkedin = f"\\includegraphics[width={params.logo_width}]{{{params.linkedin_logo}}}\\; in/" if use_emojis else "linkedIn/"
+    emoji_github = f"\\includegraphics[width={params.logo_width}]{{{params.github_logo}}}\\; " # if use_emojis else "github/"
+    emoji_linkedin = f"\\includegraphics[width={params.logo_width}]{{{params.linkedin_logo}}}\\; in/" # if use_emojis else "linkedIn/"
 
     latex_code = []
     latex_code.append("\\centering\n\n")
@@ -147,7 +145,10 @@ def make_experiences(cv_content: CVContent, params: CVParams) -> str:
             # highlights = sorted(exp.highlights, key=lambda x: x["id"], reverse=False)
             for highlight in highlights:
                 latex_code.append(f"\\resumeItem{{{highlight['text']}}}\n")
+            if exp.supplemental_info:
+                latex_code.append(f"\\resumeItem{{{exp.supplemental_info}}}\n")
             latex_code.append("\\resumeItemListEnd\n")
+        
     latex_code.append("\\resumeSubHeadingListEnd\n\n")
     return "".join(latex_code)
 
@@ -167,7 +168,7 @@ def make_header_classic(cv_content: CVContent, params: CVParams) -> str:
     latex_code.append(f"\\textbf{{\\huge {header_raw.name}}} \\\\\n")
     latex_code.append("\\vspace{7pt}\n")
     latex_code.append(f"{{ \\large {header_raw.specialization} | {header_raw.education} }}\\\\\n")
-    latex_code.append(f"{header_raw.nationality} | github/{cv_content.contact.github} | linkedin/{cv_content.contact.linkedin} \\\\\n")
+    latex_code.append(f"{header_raw.nationality} | \\href{{https://www.github.com/{cv_content.contact.github}}}{{github/{cv_content.contact.github}}} | \\href{{https://www.linkedin.com/in/{cv_content.contact.linkedin}}}{{linkedin/{cv_content.contact.linkedin}}} \\\\\n")
     latex_code.append(f"\\href{{mailto:{cv_content.contact.email}}}{{{cv_content.contact.email}}} | {cv_content.contact.phone} \\\\\n")
     latex_code.append(f"{cv_content.languages[0].name} ({cv_content.languages[0].fluency}) - {cv_content.languages[1].name} ({cv_content.languages[1].fluency}) - {cv_content.languages[2].name} ({cv_content.languages[2].fluency}) \n")
     latex_code.append("\\end{center}\n")
@@ -328,7 +329,12 @@ def make_summary(cv_content: CVContent, params: CVParams) -> str:
     latex_code.append("\\justifying\n\n")
     latex_code.append(f"{{{summary_raw.text}}}\\\\\n\n")
     if params.availability:
-        latex_code.append("Graduation expected in Sep/Oct 2025. Open to immediate opportunity.\\\\\n\n")
+        if params.cv_language == "fr":
+            latex_code.append("Diplôme attendu en Sep/Oct 2025. Ouvert aux opportunités immédiates.\\\\\n\n")
+        elif params.cv_language == "en":
+            latex_code.append("Graduation expected in Sep/Oct 2025. Open to immediate opportunity.\\\\\n\n")
+        else:
+            pass
     latex_code.append("\\RaggedLeft\n\n")
     # latex_code.append("\\vspace{5pt}\n")
 

@@ -23,12 +23,14 @@ class CVParams:
             rsc_dir="rsc",
             max_projects=3,
             availability=True,
+            latex_template_dir="data/latex",
             **kwargs
         ):
         # Input parameters
+        data_dir = Path(data_dir) if isinstance(data_dir, str) else data_dir
         self.data_dir = Path(data_dir) / cv_language
         self.cv_language = cv_language
-        self.latex_template_dir = f"data/latex"
+        self.latex_template_dir = Path(latex_template_dir) if isinstance(latex_template_dir, str) else latex_template_dir
 
         # Section inclusion parameters
         self.sentence_tf_model = sentence_tf_model
@@ -66,7 +68,7 @@ class CVParams:
         self.text_height = "1.4in"
 
         # Paths for CV output
-        self.cv_folder = cv_folder
+        self.cv_folder = Path(cv_folder) if isinstance(cv_folder, str) else cv_folder
         self.cv_name = cv_name
 
 
